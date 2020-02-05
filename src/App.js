@@ -14,14 +14,21 @@ class Hello extends Component {
   }
 }
 
+class Text extends Component {
+  render() {
+    return <p>{this.props.text}</p>
+  }
+}
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>React</h2>
         <Hello title='(from props)'/>
+        <Text text='Texto'/>
       </header>
+      
     </div>
   );
 }
