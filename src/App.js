@@ -19,8 +19,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>iAhorro</h2>
-        <Hello title='Buscar campaña (from props)'/>
+        <h2>React</h2>
+        <Hello title='(from props)'/>
       </header>
     </div>
   );
