@@ -2,21 +2,26 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-// function Hello (props) {
-//   return <h3>{props.title}</h3>
-// }
+class Contador extends Component {
+  constructor() {
+    super()
+    this.state = { contador: 1}
+    setInterval(() => {
+      this.setState({contador: this.state.contador + 1 })
+    }, 1000)
+  }
 
-// const Hello = (props) => <h3>{props.title}</h3>
-
-class Hello extends Component {
   render() {
-    return <h3>{this.props.title}</h3>
+    return <ContadorNumero numero={this.state.contador} />
   }
 }
 
-class Text extends Component {
-  render() {
-    return <p>{this.props.text}</p>
+class ContadorNumero extends Component {
+  render () {
+    return <div background-color="#FABADA">
+          <h2>{this.props.numero}</h2>
+          <h1>{this.props.numero}</h1>
+      </div>
   }
 }
 
@@ -25,8 +30,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Hello title='(from props)'/>
-        <Text text='Texto'/>
+        <Contador/>
       </header>
       
     </div>
