@@ -19,11 +19,11 @@ export default class ConditionalSection extends Component {
     this.state = {mostrarA: true}
   }
   render() {
-    const conditionalComponent = this.state.mostrarA ? <ComponenteA/> : <ComponenteB/>
+
     return (
       <div>
         <h4> Renderizado condicional </h4>
-        {conditionalComponent}
+        {this.state.mostrarA ? <ComponenteA/> : <ComponenteB/>}
       </div>
     )
   }
