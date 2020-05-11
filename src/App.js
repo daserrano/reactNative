@@ -1,50 +1,21 @@
 import React, { Component } from 'react';
-import ConditionalSection from './sections/conditional';
 import logo from './logo.svg';
 import './App.css';
 
-// class Contador extends Component {
-//   constructor() {
-//     super()
-//     this.state = { contador: 1}
-//     setInterval(() => {
-//       this.setState({contador: this.state.contador + 1 })
-//     }, 1000)
-//   }
-//
-//   render() {
-//     return <ContadorNumero numero={this.state.contador} />
-//   }
-// }
-//
-// class ContadorNumero extends Component {
-//   render () {
-//     return <div>
-//           <h2>{this.props.numero}</h2>
-//       </div>
-//   }
-// }
-//
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <div className="App"></div>
-//       </header>
-//
-//     </div>
-//   );
-// }
-
-function App() {
-  return (
+class App extends Component {
+    render() {
+      const numbers = [1, 1, 3, 4, 5]
+    return (
     <div className="App">
       <header className="App-header">
-        <ConditionalSection/>
+        <h4>Trabajando con listas</h4>
+        {numbers.map((number, index) => {
+          return <p key={index}>Soy el número {number} </p>
+        })}
       </header>
     </div>
   );
+}
 }
 
 export default App;
