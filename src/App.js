@@ -3,10 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  handleClick(e) {
+  handleClick = (e) => {
     e.preventDefault()
-    const name = document.getElementById('name').value
-    const email = document.getElementById('twitter').value
+    const name = this.inputName.value
+    const email = this.inputTwitter.value
     console.log({name, email});
   }
   render() {
@@ -20,7 +20,8 @@ class App extends Component {
             <input
               id='name'
               name='userName'
-              placeholder='Introduce tu nombre'/>
+              placeholder='Introduce tu nombre'
+              ref={inputElement => this.inputName = inputElement}/>
           </p>
 
           <p>
@@ -28,7 +29,8 @@ class App extends Component {
             <input
               id='twitter'
               name='twitterAccount'
-              placeholder='Introduce tu Twitter' />
+              placeholder='Introduce tu Twitter'
+              ref={inputElement => this.inputTwitter = inputElement} />
           </p>
 
           <button onClick={this.handleClick}>Enviar</button>
