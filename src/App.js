@@ -3,16 +3,24 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      inputName: '',
+      inputTwitter: '@',
+      inputTerms: true
+    }
+  }
   handleSubmit = (e) => {
     e.preventDefault()
-    const name = this.inputName.value
-    const email = this.inputTwitter.value
-    console.log({name, email});
+    console.log(this.state);
   }
 
   handleChange = (e) => {
     console.log('handleChange')
     console.log(e.target.checked)
+    this.setState({inputTerms: e.target.checked})
   }
   render() {
     return (
@@ -26,7 +34,8 @@ class App extends Component {
               id='name'
               name='userName'
               placeholder='Introduce tu nombre'
-              ref={inputElement => this.inputName = inputElement}/>
+              value={this.state.inputName}
+              onChange={e => this.setState({inputName: e.target.value})}/>
           </p>
 
           <p>
@@ -35,14 +44,16 @@ class App extends Component {
               id='twitter'
               name='twitterAccount'
               placeholder='Introduce tu Twitter'
-              ref={inputElement => this.inputTwitter = inputElement} />
+              value={this.state.inputTwitter}
+              onChange={e => this.setState({inputTwitter: e.target.value})}/>
           </p>
 
           <p>
             <label>
               <input
               type='checkbox'
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              checked={this.state.inputTerms}/>
               Accepted terms
             </label>
           </p>
