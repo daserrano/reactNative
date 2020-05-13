@@ -3,18 +3,23 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  handleClick = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault()
     const name = this.inputName.value
     const email = this.inputTwitter.value
     console.log({name, email});
+  }
+
+  handleChange = (e) => {
+    console.log('handleChange')
+    console.log(e.target.checked)
   }
   render() {
     return (
     <div className="App">
       <header className="App-header">
         <h4>Formularios</h4>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <p>
             <label htmlFor='name'>Nombre: </label>
             <input
@@ -33,7 +38,15 @@ class App extends Component {
               ref={inputElement => this.inputTwitter = inputElement} />
           </p>
 
-          <button onClick={this.handleClick}>Enviar</button>
+          <p>
+            <label>
+              <input
+              type='checkbox'
+              onChange={this.handleChange}/>
+              Accepted terms
+            </label>
+          </p>
+          <button>Enviar</button>
         </form>
       </header>
     </div>
