@@ -8,20 +8,13 @@ class App extends Component {
 
   constructor(props) {
     console.log('constructor')
-    super(props) //Constructor de Component
-    //Inicializamos el state del componente
-    this.state = {mensajeInicial: 'Mensaje inicial'}
-    //bindeamos el contexto al método
-    //this.handleClick = this.handleClick.bind(this)
-  }
-
-  //Otra forma de tener el contexto es el arrow function
-  handleClick = () => {
-    this.setState({mensajeInicial: 'Mensaje cambiado'})
+    super(props)
+    this.state = {mensaje: 'Mensaje inicial'}
   }
 
   componentWillMount() {
     console.log('componentWillMount')
+    this.setState({mensaje: 'mensaje modificado'})
   }
 
   render() {
@@ -30,10 +23,7 @@ class App extends Component {
     <div className="App">
       <header className="App-header">
         <h4>Ciclo de montaje: componentWillMount</h4>
-        {this.state.mensajeInicial}
-        <button onClick={this.handleClick}>
-          Cambiar mensaje
-        </button>
+        {this.state.mensaje}
       </header>
     </div>
   );
