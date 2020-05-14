@@ -7,6 +7,7 @@ class App extends Component {
   //constructor() {}  //Constructor por defecto.
 
   constructor(props) {
+    console.log('constructor')
     super(props) //Constructor de Component
     //Inicializamos el state del componente
     this.state = {mensajeInicial: 'Mensaje inicial'}
@@ -19,11 +20,16 @@ class App extends Component {
     this.setState({mensajeInicial: 'Mensaje cambiado'})
   }
 
+  componentWillMount() {
+    console.log('componentWillMount')
+  }
+
   render() {
+    console.log('render')
     return (
     <div className="App">
       <header className="App-header">
-        <h4>Ciclo de montaje: constructor</h4>
+        <h4>Ciclo de montaje: componentWillMount</h4>
         {this.state.mensajeInicial}
         <button onClick={this.handleClick}>
           Cambiar mensaje
