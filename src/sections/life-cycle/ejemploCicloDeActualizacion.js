@@ -2,17 +2,17 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 const ANIMAL_IMAGES = {
+  panda: 'https://goo.gl/oNbtoq',
   cat: 'https://goo.gl/PoQQXb',
-  dolphin: 'https://goo.gl/BbiKCd',
-  panda: 'https://goo.gl/oNbtoq'
+  dolphin: 'https://goo.gl/BbiKCd'
 }
+
+const ANIMALS = Object.keys(ANIMAL_IMAGES)
 
 class AnimalImage extends Component {
   state = { src: ANIMAL_IMAGES[this.props.animal]}
 
   componentWillReceiveProps(nextProps) {
-    //Entrara en este metodo siempre que actualicemos las props
-    // aunque sea el mismo valor, va a entrar aqui.
     console.log('componentWillReceiveProps')
     console.log(nextProps)
     this.setState({src: ANIMAL_IMAGES[nextProps.animal]})
@@ -33,29 +33,27 @@ class AnimalImage extends Component {
 }
 
 AnimalImage.propTypes = {
-  animal: PropTypes.oneOf(['cat', 'dolphin', 'panda'])
-}
-
-AnimalImage.defaultProps = {
-  animal: 'dolphin'
+  animal: PropTypes.oneOf(Object.keys(ANIMAL_IMAGES))
 }
 
 class EjemploDeCicloDeActualizacion extends Component {
   state = {animal: 'panda'}
 
+  _renderAnimalButton = (animal) => {
+    return (
+      <button
+        disabled={animal === this.state.animal}
+        key={animal}
+        onClick={() => this.setState({animal})}>
+        {animal}
+      </button>
+    )
+  }
   render() {
     return (
       <div>
         <h4> Ciclo de actualización. ComponentWillReceiveProps </h4>
-        <button onClick={() => this.setState({animal: 'panda'})}>
-          Panda
-        </button>
-        <button onClick={() => this.setState({animal: 'cat'})}>
-          Cat
-        </button>
-        <button onClick={() => this.setState({animal: 'dolphin'})}>
-          Dolphin
-        </button>
+        {ANIMALS.map(this._renderAnimalButton)}
         <AnimalImage animal={this.state.animal}/>
       </div>
     )
