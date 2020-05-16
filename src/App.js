@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FetchExample from './sections/fetch-example.js'
+import EjemploDeCicloDeActualizacion from './sections/life-cycle/ejemploCicloDeActualizacion'
 
 class App extends Component {
 
@@ -9,7 +9,7 @@ class App extends Component {
     return (
     <div className="App">
       <header className="App-header">
-        <FetchExample/>
+        <EjemploDeCicloDeActualizacion/>
       </header>
     </div>
   );
