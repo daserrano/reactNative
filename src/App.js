@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import EjemploDeCicloDeActualizacion from './sections/life-cycle/ejemploCicloDeActualizacion'
+import EjemploDeComponentWillUnmount from './sections/life-cycle/componentWillUnmount'
 
 class App extends Component {
 
@@ -9,7 +9,7 @@ class App extends Component {
     return (
     <div className="App">
       <header className="App-header">
-        <EjemploDeCicloDeActualizacion/>
+        <EjemploDeComponentWillUnmount/>
       </header>
     </div>
   );
