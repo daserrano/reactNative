@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 const ANIMAL_IMAGES = {
@@ -9,18 +9,33 @@ const ANIMAL_IMAGES = {
 
 const ANIMALS = Object.keys(ANIMAL_IMAGES)
 
-class AnimalImage extends PureComponent {
+class AnimalImage extends Component {
   state = { src: ANIMAL_IMAGES[this.props.animal]}
 
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps')
-    console.log(nextProps)
+    console.clear();
+    console.log('1. componentWillReceiveProps', nextProps);
     this.setState({src: ANIMAL_IMAGES[nextProps.animal]})
   }
 
-  //PureComponent devuelve false en caso de que no se detecten cambios
-  //en el state o en las props.
-  //Esto no aplica a si contienen objetos, puede devolver falsos positivos.
+  shouldComponentUpdate(nextProps) {
+    console.log('2. shouldComponentUpdate', nextProps);
+    return this.props.animal !== nextProps.animal
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('3. componentWillUpdate', nextProps, nextState)
+    const img = document.querySelector('img')
+    //web animations api
+    img.animate([{
+      filter: 'blur(0px)'
+    }, {
+      filter: 'blur(2px)'
+    }], {
+      duration: 500,
+      easing: 'ease'
+    })
+  }
 
   render() {
     console.log('-> render')
