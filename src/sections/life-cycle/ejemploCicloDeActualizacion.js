@@ -18,6 +18,16 @@ class AnimalImage extends Component {
     this.setState({src: ANIMAL_IMAGES[nextProps.animal]})
   }
 
+  shouldComponentUpdate(nextProps) {
+    console.log('2. shouldComponentUpdate')
+    console.log('anterior:', this.props.animal)
+    console.log('nuevo:', nextProps.animal)
+    //Éste método devuelve un booleano
+    //si este método no existe, devuelve un true por defecto
+    //éste booleano indica si se hace un render del componente.
+    return this.props.animal !== nextProps.animal;
+  }
+
   render() {
     console.log('-> render')
     return (
@@ -42,7 +52,7 @@ class EjemploDeCicloDeActualizacion extends Component {
   _renderAnimalButton = (animal) => {
     return (
       <button
-        disabled={animal === this.state.animal}
+        //disabled={animal === this.state.animal}
         key={animal}
         onClick={() => this.setState({animal})}>
         {animal}
@@ -52,7 +62,7 @@ class EjemploDeCicloDeActualizacion extends Component {
   render() {
     return (
       <div>
-        <h4> Ciclo de actualización. ComponentWillReceiveProps </h4>
+        <h4> Ciclo de actualización. ShouldComponentUpdate </h4>
         {ANIMALS.map(this._renderAnimalButton)}
         <AnimalImage animal={this.state.animal}/>
       </div>
