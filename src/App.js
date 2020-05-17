@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import EjemploDeComponentWillUnmount from './sections/life-cycle/componentWillUnmount'
+import EjemploDeComponentDidCatch from './sections/life-cycle/ejemploDeComponentDidCatch'
 
 class App extends Component {
 
@@ -9,7 +9,7 @@ class App extends Component {
     return (
     <div className="App">
       <header className="App-header">
-        <EjemploDeComponentWillUnmount/>
+        <EjemploDeComponentDidCatch/>
       </header>
     </div>
   );
