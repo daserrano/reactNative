@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PureComponent} from 'react'
 import PropTypes from 'prop-types'
 
 const ANIMAL_IMAGES = {
@@ -9,7 +9,7 @@ const ANIMAL_IMAGES = {
 
 const ANIMALS = Object.keys(ANIMAL_IMAGES)
 
-class AnimalImage extends Component {
+class AnimalImage extends PureComponent {
   state = { src: ANIMAL_IMAGES[this.props.animal]}
 
   componentWillReceiveProps(nextProps) {
@@ -18,15 +18,9 @@ class AnimalImage extends Component {
     this.setState({src: ANIMAL_IMAGES[nextProps.animal]})
   }
 
-  shouldComponentUpdate(nextProps) {
-    console.log('2. shouldComponentUpdate')
-    console.log('anterior:', this.props.animal)
-    console.log('nuevo:', nextProps.animal)
-    //Éste método devuelve un booleano
-    //si este método no existe, devuelve un true por defecto
-    //éste booleano indica si se hace un render del componente.
-    return this.props.animal !== nextProps.animal;
-  }
+  //PureComponent devuelve false en caso de que no se detecten cambios
+  //en el state o en las props.
+  //Esto no aplica a si contienen objetos, puede devolver falsos positivos.
 
   render() {
     console.log('-> render')
