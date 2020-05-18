@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import EjemploDeComponentDidCatch from './sections/life-cycle/ejemploDeComponentDidCatch'
+import BitcoinPriceContainer from './sections/container-component'
 
 class App extends Component {
 
@@ -9,7 +9,7 @@ class App extends Component {
     return (
     <div className="App">
       <header className="App-header">
-        <EjemploDeComponentDidCatch/>
+        <BitcoinPriceContainer/>
       </header>
     </div>
   );
